@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Language Immersion Simulator</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
 
+    </head>
+    <body>
+        <h1>Language Immersion Simulator</h1>
+        <div class="scenario-card" id="scenarioCard">
+            <p>Choose a scenario to practice your langauge skills!</p>
+
+            <div class="button-container">
+                <button class="scenario" id="restaurant">Restaurant</button>
+                <button class="scenario" id="airport">Airport</button>
+                <button class="scenario" id="shopping">Shopping</button>
+                <button class="scenario" id="travel">Travel</button>
+                <button class="scenario" id="friends">Friends</button>
+                <button class="scenario" id="email">Email</button>
+            </div>
+        </div>
+    </body>
+</html>
