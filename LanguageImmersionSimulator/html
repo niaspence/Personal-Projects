@@ -22,5 +22,24 @@
                 <button class="scenario" id="email">Email</button>
             </div>
         </div>
+        <script>
+            const scenarios = {
+                restuarant: [
+                    {
+                        prompt: "You want to order a coffee. How do you say it?",
+                        choices: ["Quiero un café, por favor", "Quiero un té, por favor", "Quiero un zumo, por favor."],
+                        answer: 0,
+                        audio: "Quiero un café, por favor"
+                    },
+                    {
+                        prompt: "You want to ask for the menu, Choose the correct phrase:",
+                        choices: ["¿Me puede dar el menu?", "¿Me puedes dar un café?", "¿Me das un minuto?"],
+                        answer: 0,
+                        audio: "¿Me Puede dar el menú"
+
+                    }
+                ]
+            }
+        </script>
     </body>
 </html>

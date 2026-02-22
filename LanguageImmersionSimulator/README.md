@@ -8,4 +8,4 @@ Multiple-choice and free-text input
 instant feedback on correctness
 Audio pronunciations
 Progress tracking
-adaptive difficulty
+Adaptive difficulty
