@@ -71,3 +71,56 @@ h1 {
     transform: translateY(-3px);
     box-shadow: 0 8px 15px rgba(255, 111, 191, 0.3);
 }
+
+.scenario-card p{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.answer-btn{
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 20px;
+    border:none;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #ffd6ea;
+    color: #444;
+    box-shadow: 0 5px 12px rgba(255, 111, 191, 0.2);
+    transition: all 0.3s ease;
+}
+
+.answer-btn:hover{
+    background: #ffb6d5;
+    transform: scale(1.03);
+}
+
+.audio-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #e6ccff;
+    color: #6a4c93;
+    font-weight: 600;
+    box-shadow: 0 5px 12px rgba(150, 100, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.audio-btn:hover{
+    background: #d9b3ff;
+    transform: scale(1.02);
+}
+
+.feedback {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}

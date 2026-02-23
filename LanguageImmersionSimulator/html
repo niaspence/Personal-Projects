@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lan="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <body>
         <h1>Language Immersion Simulator</h1>
         <div class="scenario-card" id="scenarioCard">
-            <p>Choose a scenario to practice your langauge skills!</p>
+            <p>Choose a scenario to practice your Spanish language skills!</p>
 
             <div class="button-container">
                 <button class="scenario" id="restaurant">Restaurant</button>
@@ -24,7 +24,7 @@
         </div>
         <script>
             const scenarios = {
-                restuarant: [
+                restaurant: [
                     {
                         prompt: "You want to order a coffee. How do you say it?",
                         choices: ["Quiero un café, por favor", "Quiero un té, por favor", "Quiero un zumo, por favor."],
@@ -38,8 +38,134 @@
                         audio: "¿Me Puede dar el menú"
 
                     }
+                ],
+                airport: [
+                    {
+                        prompt: "You want to ask where the gate is. Choose the correct phrase.",
+                        choices: ["¿Dónde está el gato?","¿Dónde está la puerta?","¿Dónde está el gate?"],
+                        answer: 1,
+                        audio: "¿Dónde está la puerta?"
+                    }
+                ],
+                shopping:[
+                    {
+                        prompt: "You want to ask the price of a shirt. Choose the correct phrase:",
+                        choices: ["Cuánto cuesta esta camiseta","¿Cuánto cuesta esta falda?","¿Cuánto cuesta esta camisa?", ],
+                        answer: 2,
+                        audio: "¿Cuánto cuesta esta camisa?"
+                    }
                 ]
+            };
+
+            let currentScenario = null;
+            let currentStep = 0;
+            let mistakes = [];
+
+            document.querySelectorAll(".scenario").forEach(button => {
+                button.addEventListener("click", () => {
+                    currentScenario = button.id; // Save selected scenario
+                    currentStep = 0; // Start at first prompt
+                    loadScenario(currentStep);
+                });
+            });
+            function loadScenario(step) {
+                const scenarioData = scenarios[currentScenario][step];
+                const container = document.getElementById("scenarioCard")
+                container.innerHTML = `
+                    <p>${scenarioData.prompt}</p>
+                    ${scenarioData.choices.map((choice,index)=>
+                        `<button class="answer-btn" onclick="checkAnswer(${index})">${choice}</button>`).join('')}
+                    <button class="audio-btn" onclick="playAudio()"> Hear pronunciation</button>
+                    <div class="feedback" id="feedback"></div>
+
+                `;
+
             }
-        </script>
+
+            function checkAnswer(selected) {
+                const scenarioData = scenarios[currentScenario][currentStep];
+                const feedback = document.getElementById("feedback");
+                if (selected === scenarioData.answer) {
+                    feedback.textContent = "Correct!";
+                    feedback.style.color = "green";
+                } else {
+                    feedback.textContent = `Incorrect. The correct answer is ${scenarioData.choices[scenarioData.answer]}`;
+                    feedback.style.color = "red";
+
+                    mistakes.push({
+                        dialouge: scenarioData.dialogue,
+                        correctAnswer: scenarioData.choices[scenarioData.answer],
+                        explanation: scenarioData.explanation
+                    });
+                }
+                
+                setTimeout(() => {
+                    currentStep++;
+                    if (currentStep < scenarios[currentScenario].length) {
+                        loadScenario(currentStep);
+                    } else {
+                        showResults();
+                    }
+                }, 2000);
+
+                function showResults() {
+                    const container = document.getElementById("scenarioCard");
+
+                    if (mistakes.length === 0) {
+                        container.innerHTML = `
+                            <h2> Perfect! No mistakes!</h2>
+                            <button onclick="goHome()">Back to Scenarios</button>
+                        `;
+                        return;
+                    }
+
+                    container.innerHTML = `
+                    <h2>Review Your Mistakes</h2>
+                    ${mistakes.map(m =>
+                        `<div class="mistake">
+                            <p><strong>Dialogue:</strong> ${m.dialogue}</p>
+                            <p><strong>Correct Response:</strong> ${m.correctAnswer}</p>
+                            <p><strong>Why:</strong> ${m.explanation}</p>
+                        </div>`
+                    ).join("")}
+                    <button onclick="goHome()">Back to Scenarios</button>
+
+                    `;
+                    }
+                }
+
+                function goHome() {
+                    currentScenario = null;
+                    currentStep = 0;
+                    mistakes = [];
+
+                    document.getElementById("scenarioCard").innerHTML = `
+                    <p>Choose a scenario to practice your language skills!</p>
+                    <div class="button-container">
+                        <button class="scenario" id="restaurant">Restaurant</button>
+                        <button class="scenario" id="airport">Airport</button>
+                        <button class="scenario" id="shopping">Shopping</button>
+                        <button class="scenario" id="travel">Travel</button>
+                        <button class="scenario" id="friends">Friends</button>
+                        <button class="scenario" id="email">Email</button>
+                    </div>
+                `;
+
+                }
+
+                    document.querySelectorAll(".scenario").forEach(button => {
+                        button.addEventListener("click", () => {
+                            currentScenario = button.id;
+                            loadScenario(0);
+                        });
+                        });
+
+
+            function playAudio() {
+                const scenarioData = scenarios[currentScenario][currentStep];
+                const utterance = new SpeechSynthesisUtterance(scenarioData.audio);
+                speechSynthesis.speak(utterance);
+            }
+        </script> 
     </body>
 </html>
