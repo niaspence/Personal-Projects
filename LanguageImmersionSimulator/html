@@ -61,13 +61,29 @@
             let currentStep = 0;
             let mistakes = [];
 
-            document.querySelectorAll(".scenario").forEach(button => {
-                button.addEventListener("click", () => {
-                    currentScenario = button.id; // Save selected scenario
-                    currentStep = 0; // Start at first prompt
-                    loadScenario(currentStep);
-                });
+            const scenarioCard = document.getElementById("scenarioCard");
+
+            scenarioCard.addEventListener("click", (event) => {
+                const scenarioButton = event.target.closest(".scenario");
+                if (!scenarioButton) return;
+                startScenario(scenarioButton.id);
             });
+
+            function startScenario(scenarioId) {
+                if (!scenarios[scenarioId] || scenarios[scenarioId].length === 0) {
+                    const container = document.getElementById("scenarioCard");
+                    container.innerHTML = `
+                        <p>This scenario is coming soon.</p>
+                        <button class="goHomeBtn" onclick="goHome()">Back to Scenarios</button>
+                    `;
+                    return;
+                }
+
+                currentScenario = scenarioId;
+                currentStep = 0;
+                mistakes = [];
+                loadScenario(currentStep);
+            }
             function loadScenario(step) {
                 const scenarioData = scenarios[currentScenario][step];
                 const container = document.getElementById("scenarioCard")
@@ -93,9 +109,9 @@
                     feedback.style.color = "red";
 
                     mistakes.push({
-                        dialouge: scenarioData.dialogue,
+                        dialogue: scenarioData.prompt,
                         correctAnswer: scenarioData.choices[scenarioData.answer],
-                        explanation: scenarioData.explanation
+                        explanation: scenarioData.explanation || "Review the matching phrase and context."
                     });
                 }
                 
@@ -114,7 +130,7 @@
                     if (mistakes.length === 0) {
                         container.innerHTML = `
                             <h2> Perfect! No mistakes!</h2>
-                            <button onclick="goHome()">Back to Scenarios</button>
+                            <button class="goHomeBtn" onclick="goHome()">Back to Scenarios</button>
                         `;
                         return;
                     }
@@ -128,7 +144,7 @@
                             <p><strong>Why:</strong> ${m.explanation}</p>
                         </div>`
                     ).join("")}
-                    <button onclick="goHome()">Back to Scenarios</button>
+                    <button class="goHomeBtn" onclick="goHome()">Back to Scenarios</button>
 
                     `;
                     }
@@ -152,14 +168,6 @@
                 `;
 
                 }
-
-                    document.querySelectorAll(".scenario").forEach(button => {
-                        button.addEventListener("click", () => {
-                            currentScenario = button.id;
-                            loadScenario(0);
-                        });
-                        });
-
 
             function playAudio() {
                 const scenarioData = scenarios[currentScenario][currentStep];

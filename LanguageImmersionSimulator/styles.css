@@ -124,3 +124,28 @@ h1 {
     font-size: 1.1rem;
     font-weight: 600;
 }
+
+.goHomeBtn {
+    margin-top: 20px;
+    padding: 14px 25px;
+    border: none;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ffcce6, #ffb3d9);
+    color: #8a2d5d;
+
+    box-shadow: 0 6px 15px rgba(255, 111, 191, 0.25);
+}
+
+.goHomeBtn:hover {
+    background: linear-gradient(135def, #ffb3d9, #ff99cc);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 111, 191, 0.35);
+}
+
+.goHomeBtn:active {
+    transform: scale(0.96);
+}
