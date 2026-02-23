@@ -45,6 +45,12 @@
                         choices: ["¿Dónde está el gato?","¿Dónde está la puerta?","¿Dónde está el gate?"],
                         answer: 1,
                         audio: "¿Dónde está la puerta?"
+                    },
+                    {
+                        prompt: "You want to ask for directions to the bathroom. Choose the correct phrase:",
+                        choices: ["¿Dónde está el bandido?","¿Dónde está el baño?","¿Dónde está el dormitorio?"],
+                        answer: 1,
+                        audio: "¿Dónde está el baño?"
                     }
                 ],
                 shopping:[
@@ -53,6 +59,12 @@
                         choices: ["Cuánto cuesta esta camiseta","¿Cuánto cuesta esta falda?","¿Cuánto cuesta esta camisa?", ],
                         answer: 2,
                         audio: "¿Cuánto cuesta esta camisa?"
+                    },
+                    {
+                        prompt: "You want to pay with a credit card. Choose the correct phrase:",
+                        choices: ["¿Puedo pagar con tarjeta de crédito?","¿Puedo pagar con efectivo?","¿Puedo pagar con cheque?"],
+                        answer: 0,
+                        audio: "¿Puedo pagar con tarjeta de crédito?"
                     }
                 ]
             };
