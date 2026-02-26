@@ -29,13 +29,15 @@
                         prompt: "You want to order a coffee. How do you say it?",
                         choices: ["Quiero un café, por favor", "Quiero un té, por favor", "Quiero un zumo, por favor."],
                         answer: 0,
-                        audio: "Quiero un café, por favor"
+                        audio: "Quiero un café, por favor",
+                        explanation: "If you want to order a coffee, you would say 'Quiero un café, por favor'. The other options are for ordering tea or juice."
                     },
                     {
                         prompt: "You want to ask for the menu, Choose the correct phrase:",
                         choices: ["¿Me puede dar el menu?", "¿Me puedes dar un café?", "¿Me das un minuto?"],
                         answer: 0,
-                        audio: "¿Me Puede dar el menú"
+                        audio: "¿Me Puede dar el menú",
+                        explanation: "To ask for the menu, you would say '¿Me puede dar el menú?'. The other options are for asking for a coffee or a minute."
 
                     }
                 ],
@@ -44,13 +46,15 @@
                         prompt: "You want to ask where the gate is. Choose the correct phrase.",
                         choices: ["¿Dónde está el gato?","¿Dónde está la puerta?","¿Dónde está el gate?"],
                         answer: 1,
-                        audio: "¿Dónde está la puerta?"
+                        audio: "¿Dónde está la puerta?",
+                        explanation: "To ask where the gate is, you would say '¿Dónde está la puerta?'. The other options are asking where the cat or gate (in English) is."
                     },
                     {
                         prompt: "You want to ask for directions to the bathroom. Choose the correct phrase:",
                         choices: ["¿Dónde está el bandido?","¿Dónde está el baño?","¿Dónde está el dormitorio?"],
                         answer: 1,
-                        audio: "¿Dónde está el baño?"
+                        audio: "¿Dónde está el baño?",
+                        explanation: "To ask for directions to the bathroom, you would say '¿Dónde está el baño?'. The other options are asking where the bandit or bedroom is."
                     }
                 ],
                 shopping:[
@@ -62,8 +66,8 @@
                     },
                     {
                         prompt: "You want to pay with a credit card. Choose the correct phrase:",
-                        choices: ["¿Puedo pagar con tarjeta de crédito?","¿Puedo pagar con efectivo?","¿Puedo pagar con cheque?"],
-                        answer: 0,
+                        choices: ["¿Puedo pagar con efectivo?","¿Puedo pagar con tarjeta de crédito?","¿Puedo pagar con cheque?"],
+                        answer: 1,
                         audio: "¿Puedo pagar con tarjeta de crédito?"
                     }
                 ]
